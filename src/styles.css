@@ -164,3 +164,7 @@ body {
   transition: background 0.3s, color 0.3s, transform 0.2s;
   margin-left: 10px;
 }
+
+.search button {
+  background: linear-gradient(90deg, var(--grey-1) 60%, #7d7d7c 100%);
+}

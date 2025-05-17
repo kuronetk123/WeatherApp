@@ -1,13 +1,13 @@
 <div class="search">
   <input #cityInput placeholder="Search city" name="city" (keyup.enter)="getWeatherDataOfCity(cityInput.value)" />
-  <button type="button" (click)="getWeatherDataOfCity(cityInput.value)" class="btn btn-primary" [disabled]="isLoading()">{{isLoading() ? "Searching..." : "Search"}}</button>
+  <button type="button" (click)="getWeatherDataOfCity(cityInput.value)" class="btn btn-primary" [disabled]="isLoading()">Search</button>
 </div>
 
 <!-- Error message -->
 <div *ngIf="error()" class="error">{{ error() }}</div>
 
 <!-- Loading state -->
-<div *ngIf="isLoading()" class="loading">Loading...</div>
+<!-- <div *ngIf="isLoading()" class="loading">Loading...</div> -->
 
 <!-- Weather data -->
 <div class="container" *ngIf="weatherData() as data">
