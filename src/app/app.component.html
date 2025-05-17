@@ -1,6 +1,6 @@
 <div class="search">
   <input #cityInput placeholder="Search city" name="city" (keyup.enter)="getWeatherDataOfCity(cityInput.value)" />
-  <button type="button" (click)="getWeatherDataOfCity(cityInput.value)" class="btn btn-primary">Search</button>
+  <button type="button" (click)="getWeatherDataOfCity(cityInput.value)" class="btn btn-primary" [disabled]="isLoading()">{{isLoading() ? "Searching..." : "Search"}}</button>
 </div>
 
 <!-- Error message -->
