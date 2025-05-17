@@ -1,0 +1,63 @@
+<div class="search">
+  <input #cityInput placeholder="Search city" name="city" (keyup.enter)="getWeatherDataOfCity(cityInput.value)" />
+  <button type="button" (click)="getWeatherDataOfCity(cityInput.value)" class="btn btn-primary">Search</button>
+</div>
+
+<!-- Error message -->
+<div *ngIf="error()" class="error">{{ error() }}</div>
+
+<!-- Loading state -->
+<div *ngIf="isLoading()" class="loading">Loading...</div>
+
+<!-- Weather data -->
+<div class="container" *ngIf="weatherData() as data">
+  <div class="upper-data">
+    <img src="../assets/hot.png" *ngIf="data.main.temp > 14" alt="Hot weather" />
+    <img src="../assets/cold.png" *ngIf="data.main.temp <= 14" alt="Cold weather" />
+    <div class="weather-data">
+      <div class="location">{{ cityName() }}</div>
+      <div class="temperature">{{ data.main.temp | number: '1.0-0' }}°C</div>
+    </div>
+  </div>
+  <div class="lower-data">
+    <div class="more-infor-label">More Information</div>
+    <div class="more-infor-container">
+      <div class="info-block">
+        <div class="info-block-label">
+          <img src="../assets/min.png" alt="Minimum temperature" />
+          <span>min</span>
+        </div>
+        <div class="info-block-value">
+          {{ data.main.temp_min | number: '1.0-0' }}°C
+        </div>
+      </div>
+      <div class="info-block">
+        <div class="info-block-label">
+          <img src="../assets/max.png" alt="Maximum temperature" />
+          <span>max</span>
+        </div>
+        <div class="info-block-value">
+          {{ data.main.temp_max | number: '1.0-0' }}°C
+        </div>
+      </div>
+      <div class="info-block">
+        <div class="info-block-label">
+          <img src="../assets/humidity.png" alt="Humidity" />
+          <span>Humidity</span>
+        </div>
+        <div class="info-block-value">
+          {{ data.main.humidity | number: '1.0-0' }}%
+        </div>
+      </div>
+      <div class="info-block">
+        <div class="info-block-label">
+          <img src="../assets/wind.png" alt="Wind speed" />
+          <span>wind</span>
+        </div>
+        <div class="info-block-value">
+          {{ data.wind.speed | number: '1.0-0' }} km/h
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
