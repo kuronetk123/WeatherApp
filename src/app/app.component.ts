@@ -52,9 +52,9 @@ export class AppComponent implements OnInit {
           ...response,
           main: {
             ...response.main,
-            temp: response.main.temp - 273.15,
-            temp_min: response.main.temp_min - 273.15,
-            temp_max: response.main.temp_max - 273.15,
+            temp: (response.main.temp -32)/1.8,
+            temp_min: (response.main.temp_min -32)/1.8  ,
+            temp_max: (response.main.temp_max -32)/1.8  ,
           },
         };
         this.weatherData.set(transformedData);
